@@ -111,3 +111,9 @@ The same but in pg-html-json looks as follows:
   },
 ]
 ```
+
+You could then execute the function as follows:
+
+```sql
+select json_to_html ('<above-as-string'::json)
+```
