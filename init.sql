@@ -6,13 +6,18 @@ drop function json_to_html;
 create or replace function json_to_html (a json)
     returns text
 as $$
+    void_elements = ["!doctype", "meta"]
+    non_void_elements = ["body", "head", "h1", "h2", "h3"] # expand list
+
     def parse_attr(attr):
         import json
         return json.loads(attr)
 
-    def tag(name, *args, **kwargs):
+    def tag(__name, *args, **kwargs):
         g = "<"
-        g += name.lower()
+        g += __name.lower()
+
+        plpy.info(__name.lower())
 
         for k, v in kwargs.items():
             if len(v) > 0:
@@ -20,16 +25,19 @@ as $$
             else:
                 g += " {}".format(k.lower())
 
-        if len(args) > 0:
+        if len(args) > 0 or __name in non_void_elements:
             g += ">"
             for el in args:
                 if type(el) is dict:
                     g += tag(el['t'], *el['c'], **el['a'])
                 else:
                     g += el
-            g += "</{}>".format(name.lower())
+            g += "</{}>".format(__name.lower())
         else:
-            g += "/>"
+            if __name in void_elements:
+                g += ">"
+            else:
+                g += "/>"
         return g
 
     attr = parse_attr(a)
