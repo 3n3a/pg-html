@@ -27,3 +27,8 @@ Both functions were tested ten times and the timing information was gathered in 
 * Average Execution Time: 0.351 ms
 * Median Planning Time: 0.020 ms
 * Average Planning Time: 0.019 ms
+
+## Discussion
+
+My theory is that the performance optimisation in python regarding recursion are much more advanced
+compared to pl/pgsql where the actual looping isn't of that high importance .
