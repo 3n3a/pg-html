@@ -23,6 +23,7 @@
 | Postgres Array Functions | https://www.postgresql.org/docs/14/functions-array.html | 4.3.23 | Contains Documentation on array manipulation checking etc |
 | Postgres Assertion for Debuggign | https://www.postgresql.org/docs/current/plpgsql-errors-and-messages.html#PLPGSQL-STATEMENTS-ASSERT | 4.3.23 | Contains the documentation on how to use the Assertino function |
 | Postgres Anonymous Code Blocks PL/pgSQL | https://www.postgresql.org/docs/current/sql-do.html | 4.3.23 | Documentatino on executing sql without function context |
+| Postgres Explain Analyse | https://www.postgresql.org/docs/14/sql-explain.html | 4.3.23 | Options into the EXPLAIN ANALYSE function call |
 
 ## PL/Python
 
