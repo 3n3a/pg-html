@@ -13,6 +13,7 @@ Now to the interesting part, which of the two functions produces the html in les
 Both functions were tested ten times and the timing information was gathered in [pg-html-bench.ods](./pg-html-bench.ods).
 
 > **TLDR**: the pl/python3 implementation takes half the time on average compared to the sql implementation.
+> but when handling larger amounts of work the two implementations deliver about the same performance, even thought python is in the lead by a few ms.
 
 ### PSQL
 
