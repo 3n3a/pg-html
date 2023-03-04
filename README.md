@@ -33,3 +33,5 @@ so it supports all the attributes and variables that the standard `postgres` one
 ## exampl
 
 The [countries.html](./docs/countries.html) is an example output of `table_to_html` function.
+
+[View Live Version](https://gh.3n3a.ch/pg-html/countries.html)
