@@ -1,6 +1,10 @@
 # pg-html
 HTML from your Database
 
+>
+> **Disclaimer**: all the content in this repository is for research purposes only. I wouldn't recommend running this in production, well not yet.
+> 
+
 The Idea being, that you can generate HTML from within the SQL, as like a function. Because wouldn't it be cool, if I could say like "render me this table as a literal html table", right?
 
 ## usage
