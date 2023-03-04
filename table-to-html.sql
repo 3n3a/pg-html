@@ -131,7 +131,9 @@ begin
                                                                      json_build_array(
                                                                          json_build_object(
                                                                              't', 'main',
-                                                                             'a', json_build_object(),
+                                                                             'a', json_build_object(
+                                                                                'style', 'overflow: auto;'
+                                                                             ),
                                                                              'c', json_build_array(
                                                                                  json_build_object('t', 'h1', 'a',
                                                                                                         json_build_object(),
@@ -152,4 +154,4 @@ end;
 $$ language plpgsql;
 
 explain (analyze, costs off, timing on)
-select table_to_html('select id, name, capital, currency_name from countries', 'Countries')
+select table_to_html('select id, name, capital, currency_name, region, subregion, latitude, longitude, created_at, updated_at from countries', 'Countries')
