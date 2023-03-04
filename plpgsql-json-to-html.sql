@@ -3,6 +3,7 @@
 --- IMPLEMENTATION
 ---
 
+drop function if exists html_tag;
 create or replace function html_tag (name text, attr json, children json) returns text as
 $$
 DECLARE
@@ -56,7 +57,7 @@ begin
 end;
 $$ language plpgsql;
 
-
+drop function if exists json_to_html_pg;
 create or replace function json_to_html_pg (a json) returns text as
 $$
 declare
@@ -74,29 +75,3 @@ begin
     return html;
 end;
 $$ language plpgsql;
-
----
---- EXAMPLES
----
-select json_to_html_pg(
-    json_build_array(
-        json_build_object(
-            't', '!doctype',
-            'a', json_build_object('html', ''),
-            'c', json_build_array()
-        ),
-        json_build_object(
-           't', 'body',
-           'a', json_build_object(),
-           'c', json_build_array(
-                json_build_object(
-                    't', 'h1',
-                    'a', json_build_object(),
-                    'c', json_build_array('test')
-                )
-           )
-        )
-    )
-);
-
-select json_to_html_pg('[{"t":"!doctype","a":{"html":""},"c":[]},{"t":"html","a":{"lang":"en"},"c":[{"t":"head","a":{},"c":[{"t":"meta","a":{"charset":"UTF-8"},"c":[]},{"t":"meta","a":{"http-equiv":"X-UA-Compatible","content":"IE=edge"},"c":[]},{"t":"meta","a":{"name":"viewport","content":"width=device-width, initial-scale=1.0"},"c":[]},{"t":"title","a":{},"c":["Document"]}]},{"t":"body","a":{},"c": [{"t":"h1", "a": {}, "c": ["Document"]}]}]}]'::json)

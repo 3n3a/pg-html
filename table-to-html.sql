@@ -1,4 +1,4 @@
-drop function table_to_html;
+drop function if exists table_to_html;
 create or replace function table_to_html(statement text, title text, standalone bool default true, stylesheet text default 'https://unpkg.com/@picocss/pico@1.*/css/pico.classless.min.css') returns text as
 $$
 DECLARE
@@ -152,6 +152,3 @@ begin
     return json_to_html(_table_output);
 end;
 $$ language plpgsql;
-
-explain (analyze, costs off, timing on)
-select table_to_html('select id, name, capital, currency_name, region, subregion, latitude, longitude, created_at, updated_at from countries', 'Countries')
