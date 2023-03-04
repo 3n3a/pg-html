@@ -7,6 +7,7 @@
 | Title | Link | Date | Description |
 | ----- | ---- | ---- | ----------- |
 | Void Elements in HTML | https://developer.mozilla.org/en-US/docs/Glossary/Void_element | 4.3.23 | Contains documentation and list of void elements in html |
+| New HTML Checker w3 | https://validator.w3.org/nu/#textarea | 4.3.23 | Checks the html against the spec, provided by the w3 organisation |
 
 ## PL/pgSQL
 
