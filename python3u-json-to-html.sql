@@ -1,13 +1,10 @@
--- the python extension for programming the conversion
 create extension plpython3u;
 
--- the function that does the magic
 drop function json_to_html;
 create or replace function json_to_html (a json)
     returns text
 as $$
-    void_elements = ["!doctype", "meta"]
-    non_void_elements = ["body", "head", "h1", "h2", "h3"] # expand list
+    void_elements = ["!doctype", "meta", "area", "base", "br", "col", "embed", "hr", "img", "input", "keygen", "link", "param", "source", "track", "wbr"]
 
     def parse_attr(attr):
         import json
@@ -25,7 +22,7 @@ as $$
             else:
                 g += " {}".format(k.lower())
 
-        if len(args) > 0 or __name in non_void_elements:
+        if len(args) > 0 or __name not in void_elements:
             g += ">"
             for el in args:
                 if type(el) is dict:
@@ -34,10 +31,8 @@ as $$
                     g += el
             g += "</{}>".format(__name.lower())
         else:
-            if __name in void_elements:
-                g += ">"
-            else:
-                g += "/>"
+    # self-closing tags don't exist
+            g += ">"
         return g
 
     attr = parse_attr(a)
@@ -50,7 +45,7 @@ as $$
     return r
 $$ language plpython3u;
 
--- usage example
+
 select json_to_html(
     json_build_array(
         json_build_object(
@@ -71,3 +66,6 @@ select json_to_html(
         )
     )
 )
+
+select json_to_html('[{"t":"!doctype","a":{"html":""},"c":[]},{"t":"html","a":{"lang":"en"},"c":[{"t":"head","a":{},"c":[{"t":"meta","a":{"charset":"UTF-8"},"c":[]},{"t":"meta","a":{"http-equiv":"X-UA-Compatible","content":"IE=edge"},"c":[]},{"t":"meta","a":{"name":"viewport","content":"width=device-width, initial-scale=1.0"},"c":[]},{"t":"title","a":{},"c":["Document"]}]},{"t":"body","a":{},"c": [{"t":"h1", "a": {}, "c": ["Document"]}]}]}]'::json)
+
