@@ -21,7 +21,7 @@
 | Iterating over json object (key, value) in postgres | https://dba.stackexchange.com/a/231017 | 4.3.23 | Example of iteration over json-object, output in key value format |
 | Postgres Calling Functons | https://www.postgresql.org/docs/14/sql-syntax-calling-funcs.html | 4.3.23 | Contains Documentation on the different ways to call a self-written function in postgres |
 | Postgres Array Functions | https://www.postgresql.org/docs/14/functions-array.html | 4.3.23 | Contains Documentation on array manipulation checking etc |
-
+| Postgres Assertion for Debuggign | https://www.postgresql.org/docs/current/plpgsql-errors-and-messages.html#PLPGSQL-STATEMENTS-ASSERT | 4.3.23 | Contains the documentation on how to use the Assertino function |
 
 ## PL/Python
 
