@@ -32,4 +32,4 @@ so it supports all the attributes and variables that the standard `postgres` one
 
 ## exampl
 
-The [countries.html](./countries.html) is an example output of `table_to_html` function.
+The [countries.html](./docs/countries.html) is an example output of `table_to_html` function.
