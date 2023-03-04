@@ -29,3 +29,7 @@ docker pull 3n3a/postgres:14-alpine-py3
 
 the image wasn't modified apart from the addition of the plpython3u library.
 so it supports all the attributes and variables that the standard `postgres` one does too.
+
+## exampl
+
+The [countries.html](./countries.html) is an example output of `table_to_html` function.
