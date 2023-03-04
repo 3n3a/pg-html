@@ -2,6 +2,12 @@
 
 > Various links to help in the development
 
+## General
+
+| Title | Link | Date | Description |
+| ----- | ---- | ---- | ----------- |
+| Void Elements in HTML | https://developer.mozilla.org/en-US/docs/Glossary/Void_element | 4.3.23 | Contains documentation and list of void elements in html |
+
 ## PL/pgSQL
 
 | Title | Link | Date | Description |
