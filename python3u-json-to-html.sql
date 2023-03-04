@@ -14,7 +14,7 @@ as $$
         g = "<"
         g += __name.lower()
 
-        plpy.info(__name.lower())
+        #plpy.info(__name.lower())
 
         for k, v in kwargs.items():
             if len(v) > 0:
@@ -36,7 +36,7 @@ as $$
         return g
 
     attr = parse_attr(a)
-    plpy.info(attr, type(attr))
+    #plpy.info(attr, type(attr))
 
     r = ""
     for el in attr:
