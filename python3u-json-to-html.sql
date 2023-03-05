@@ -24,6 +24,9 @@ as $$
 
         if len(args) > 0 or __name not in void_elements:
             g += ">"
+
+            # use parallel map, should speed up processing
+            # https://superfastpython.com/multiprocessing-pool-map/
             for el in args:
                 if type(el) is dict:
                     g += tag(el['t'], *el['c'], **el['a'])
