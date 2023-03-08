@@ -34,7 +34,6 @@ begin
        array_length(array_positions(_void_elements, _tag_name), 1) IS NULL -- test if _tag_name is NOT contained in
     then
         html := html || '>';
-        -- todo: direct child --> as text
         for _child in
             select * from json_array_elements(children)
         loop
@@ -47,7 +46,6 @@ begin
         end loop;
         html := html || '</' || _tag_name || '>';
     else
-        -- todo: void_elements
         html := html || '>';
     end if;
 
