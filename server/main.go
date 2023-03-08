@@ -22,6 +22,8 @@ func main() {
 
 	e := echo.New()
 	e.Use(middleware.Gzip())
+
+	// TODO: create query so user can select table they want --> obviously from a list of presets :)
 	e.GET("/", func(c echo.Context) error {
 		htmlRes := ""
 		err := db.QueryRow("select get_from_cache_or_compute('select id, name, capital, currency_name, region, subregion, latitude, longitude, created_at, updated_at from countries', 'Countries')").
