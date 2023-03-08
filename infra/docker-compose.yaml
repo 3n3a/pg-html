@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  pg:
+    image: docker.io/3n3a/postgres:14-alpine-py3
+    restart: "always"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - pgdb-data:/var/lib/postgresql/data/
+      - ../install.sql:/docker-entrypoint-initdb.d/install.sql
+
+  admin:
+    image: 'dpage/pgadmin4'
+    restart: "always"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=postgres@postgres.com
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+    volumes:
+      - pgadmin4-data:/var/lib/pgadmin
+      - ./servers.json:/pgadmin4/servers.json
+    ports:
+      - "5480:80"
+
+volumes:
+  pgadmin4-data:
+  pgdb-data:
